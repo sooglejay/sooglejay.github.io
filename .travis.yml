@@ -21,7 +21,6 @@ install:
   - npm install hexo-generator-baidu-sitemap --save
 
 
-
 script:
   - hexo clean
   - hexo generate
@@ -31,11 +30,11 @@ after_success:
   - git init
   - git add --all .
   - git commit -m "Auto Builder From Travis"
-  - git push --quiet --force https://github.com/sooglejay/sooglejay.github.io.git master
+  - git push --quiet --force https://$DEPLOY_REPO@github.com/sooglejay/sooglejay.github.io.git master
 
 branches:
   only:
-    - master
+    - dev
 cache:
   directories:
     - node_modules
