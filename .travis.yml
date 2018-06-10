@@ -29,8 +29,9 @@ after_success:
   - cd ./public
   - git init
   - git add --all .
-  - git commit -m "Auto Builder From Travis"
-  - git push --force https://github.com/sooglejay/sooglejay.github.io.git master
+  - git commit -m "JW Travis"
+  - git push --quiet --force https://github.com/sooglejay/sooglejay.github.io.git master
+  - pwd
 
 branches:
   only:
