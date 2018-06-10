@@ -3,25 +3,26 @@ node_js:
 - "4"  # nodejs的版本
 branches:
   only:
-  - master  # 设置自动化部署的分支
+  - dev  # 设置自动化部署的分支
 before_install:
 - export TZ='Asia/Shanghai'  # 设置时区
 - npm install -g hexo
 - npm install -g hexo-cli
 # 将xxxxxxxxxxx替换上面生成的内容
 # 这里面的文件路径可根据自己的情况进行修改
-# 解密id_rsa_jwblog.enc 输出到.ssh/文件夹下，命名为id_rsa_travis
-- openssl aes-256-cbc -K $encrypted_6bff5c6c6e9b_key -iv $encrypted_6bff5c6c6e9b_iv -in .travis/id_rsa_jwblog.enc -out ~\/.ssh/id_rsa_travis -d
+# 解密id_rsa_blog.enc 输出到.ssh/文件夹下，命名为id_rsa
+
+- openssl aes-256-cbc -K $encrypted_6bff5c6c6e9b_key -iv $encrypted_6bff5c6c6e9b_iv -in id_rsa_jwblog.enc -out ~\/.ssh/id_rsa_jwblog -d
 # 设置id_rsa文件权限
-- chmod 600 ~/.ssh/id_rsa_travis
+- chmod 600 ~/.ssh/id_rsa_jwblog
 # 添加ssh密钥
 - eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa_travis
-# # 添加ssh配置文件
+- ssh-add ~/.ssh/id_rsa_jwblog
+# 添加ssh配置文件
 - cp .travis/ssh_config ~/.ssh/config
 # 设置github账户信息
 - git config --global user.name "sooglejay" #设置github用户名
-- git config --global user.email "394055524@qq.com" #设置github用户邮箱
+- git config --global user.email 394055524@qq.com #设置github用户邮箱
 # 安装依赖组件
 install:
 - npm install
