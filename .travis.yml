@@ -1,35 +1,47 @@
 language: node_js
 node_js:
-- "4"  # nodejs的版本
+  - "6.9.4"
+before_install:
+  - git config --global push.default matching
+  - git config --global user.name "sooglejay"
+  - git config --global user.email "394055524@qq.com"
+  - export TZ='Asia/Shanghai'  # 设置时区
+
+install:
+  - npm install hexo-cli -g
+  - npm install hexo --save
+  - npm install
+  - npm install hexo-generator-feed --save
+  - npm install hexo-deployer-git --save
+  - npm install hexo-renderer-ejs --save
+  - npm install hexo-renderer-stylus --save
+  - npm install hexo-renderer-marked --save
+  - npm install hexo-renderer-sass --save
+  - npm install hexo-generator-sitemap --save
+  - npm install hexo-generator-baidu-sitemap --save
+
+  - touch ~/.ssh/id_rsa_travis
+  - openssl aes-256-cbc -K $encrypted_6bff5c6c6e9b_key -iv $encrypted_6bff5c6c6e9b_iv -in id_rsa_jwblog.enc -out  ~/.ssh/id_rsa_travis -d
+  - chmod 600 ~/.ssh/id_rsa_travis
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa_travis
+  - cp .travis/ssh_config ~/.ssh/config
+
+script:
+  - hexo clean
+  - hexo generate
+  - hexo deploy
+
+# after_success:
+#   - cd ./public
+#   - git init
+#   - git add --all .
+#   - git commit -m "Auto Builder From Travis"
+#   - git push --quiet --force https://github.com/sooglejay/sooglejay.github.io.git master
+
 branches:
   only:
-  - dev  # 设置自动化部署的分支
-before_install:
-- export TZ='Asia/Shanghai'  # 设置时区
-
-- npm install hexo -g --save
-- npm install hexo-cli -g --save
-
-# 将xxxxxxxxxxx替换上面生成的内容
-# 这里面的文件路径可根据自己的情况进行修改
-# 解密id_rsa_blog.enc 输出到.ssh/文件夹下，命名为id_rsa
-
-- touch ~/.ssh/id_rsa_travis
-- pwd
-- openssl aes-256-cbc -K $encrypted_6bff5c6c6e9b_key -iv $encrypted_6bff5c6c6e9b_iv -in id_rsa_jwblog.enc -out  ~/.ssh/id_rsa_travis -d
-# 设置id_rsa文件权限
-- chmod 600 ~/.ssh/id_rsa_travis
-# 添加ssh密钥
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa_travis
-# 添加ssh配置文件
-- cp .travis/ssh_config ~/.ssh/config
-# 设置github账户信息
-- git config --global user.name "sooglejay" #设置github用户名
-- git config --global user.email 394055524@qq.com #设置github用户邮箱
-# 安装依赖组件
-install:
-- npm install
-# 执行的命令
-script:
-- node_modules/hexo/bin/hexo clean &&  node_modules/hexo/bin/hexo  g -d
+    - master
+cache:
+  directories:
+    - node_modules
