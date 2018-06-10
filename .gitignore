@@ -1,3 +1,11 @@
 node_modules/
 
-.deploy_git/
+
+.deploy_git/*
+!./.deploy_git/atom.xml
+!./.deploy_git/sitemap.xml
+
+!atom.xml
+!sitemap.xml
+
+
