@@ -96,4 +96,4 @@ theme: landscape
 deploy:
   type:
   repo: git@github.com:sooglejay/sooglejay.github.io.git
-  branch: master
+  branch: dev
