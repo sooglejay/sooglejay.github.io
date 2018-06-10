@@ -6,14 +6,16 @@ branches:
   - dev  # 设置自动化部署的分支
 before_install:
 - export TZ='Asia/Shanghai'  # 设置时区
-- npm install -g hexo --save 
-- npm install -g hexo-cli --save
+
+- npm install hexo -g --save
+- npm install hexo-cli -g --save
+
 # 将xxxxxxxxxxx替换上面生成的内容
 # 这里面的文件路径可根据自己的情况进行修改
 # 解密id_rsa_blog.enc 输出到.ssh/文件夹下，命名为id_rsa
 
 - touch ~/.ssh/id_rsa_travis
-
+- pwd
 - openssl aes-256-cbc -K $encrypted_6bff5c6c6e9b_key -iv $encrypted_6bff5c6c6e9b_iv -in id_rsa_jwblog.enc -out  ~/.ssh/id_rsa_travis -d
 # 设置id_rsa文件权限
 - chmod 600 ~/.ssh/id_rsa_travis
@@ -30,4 +32,4 @@ install:
 - npm install
 # 执行的命令
 script:
-- hexo clean && hexo g -d
+- node_modules/hexo/bin/hexo clean &&  node_modules/hexo/bin/hexo  g -d
