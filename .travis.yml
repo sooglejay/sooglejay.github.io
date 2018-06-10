@@ -29,14 +29,13 @@ install:
 script:
   - hexo clean
   - hexo generate
-  - hexo deploy
 
-# after_success:
-#   - cd ./public
-#   - git init
-#   - git add --all .
-#   - git commit -m "Auto Builder From Travis"
-#   - git push --quiet --force https://github.com/sooglejay/sooglejay.github.io.git master
+after_success:
+  - cd ./public
+  - git init
+  - git add --all .
+  - git commit -m "Auto Builder From Travis"
+  - git push --quiet --force https://github.com/sooglejay/sooglejay.github.io.git master
 
 branches:
   only:
