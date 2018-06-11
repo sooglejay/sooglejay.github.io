@@ -4,6 +4,10 @@ node_js: stable
 # S: Build Lifecycle
 install:
   - npm install
+  - cd themes/tranquilpeak
+  - npm install
+  - npm run prod 
+  - cd ../..
 
 
 
@@ -12,7 +16,7 @@ install:
  # - npm install -g gulp
 
 script:
-  - hexo g
+  - hexo clean && hexo generate
 
 after_script:
   - cd ./public
