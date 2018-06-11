@@ -78,16 +78,15 @@ feed:
   type: atom
   path: atom.xml
   limit: 20 #在feed中出现的最大文章数（使用0或者false）来显示所有文章
-  hub:
-  content:
-      
+
+
 sitemap:
   path: sitemap.xml
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
