@@ -88,6 +88,9 @@ sitemap:
 ## Themes: https://hexo.io/themes/
 theme: tranquilpeak
 
+disqus_shortname: sooglejay-github-io
+
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
