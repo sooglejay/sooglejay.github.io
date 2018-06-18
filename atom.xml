@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://sooglejay.github.io/"/>
+  <updated>2018-06-18T04:53:51.691Z</updated>
+  <id>http://sooglejay.github.io/</id>
+  
+  <author>
+    <name>sooglejay</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Day</title>
+    <link href="http://sooglejay.github.io/2018/06/10/Day/"/>
+    <id>http://sooglejay.github.io/2018/06/10/Day/</id>
+    <published>2018-06-10T21:28:38.000Z</published>
+    <updated>2018-06-18T04:53:51.691Z</updated>
+    
+    <content type="html"><![CDATA[<p>This page is just for test, please take it easy…</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;This page is just for test, please take it easy…&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
